@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -6,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"League Spartan"', ...defaultTheme.fontFamily.sans],
+        body: ['"League Spartan"', ...defaultTheme.fontFamily.sans]
+      },
       colors: {
         primary: '#5ba4a4',
         light: {
