@@ -12,7 +12,7 @@ const Home: NextPage<HomeProps> = ({ jobs }) => {
   return (
     <div>
       <Header />
-      <main className="container mx-auto min-h-[calc(100vh_-_144px)] bg-light-200">
+      <main className="container mx-auto min-h-[calc(100vh_-_144px)]">
         <div className="w-full px-4 py-8">
           <JobList jobs={jobs} />
         </div>
