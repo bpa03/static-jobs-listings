@@ -26,7 +26,7 @@ const JobItem: FC<{ job: Job }> = ({ job }) => {
   const technologies: string[] = [...job.tools, ...job.languages];
 
   return (
-    <li className="w-full bg-white rounded-md pl-8 pr-6 pb-4 pt-10 relative">
+    <li className="w-full bg-white shadow-md rounded-md pl-8 pr-6 pb-4 pt-10 relative">
       {job.featured ? <CardIndicator /> : null}
       <div className="absolute -top-8">
         <div className="relative w-16 h-16">
