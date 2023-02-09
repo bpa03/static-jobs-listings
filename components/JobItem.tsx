@@ -22,7 +22,12 @@ const CardIndicator: FC = () => (
   <span className="absolute top-0 left-0 bottom-0 bg-primary w-1 rounded-bl-md rounded-tl-md"/>
 )
 
-const JobItem: FC<{ job: Job }> = ({ job }) => {
+interface JobItemProps {
+  onClickFilter: (filter: string) => void;
+  job: Job;
+}
+
+const JobItem: FC<JobItemProps> = ({ job, onClickFilter }) => {
   const technologies: string[] = [...job.tools, ...job.languages];
 
   return (
@@ -61,12 +66,13 @@ const JobItem: FC<{ job: Job }> = ({ job }) => {
       <div className="w-full h-[1px] bg-slate-200 my-4" />
       <div className="flex gap-x-2 gap-y-3 flex-wrap">
         {technologies.map((tool, index) => (
-          <span
+          <button
             key={tool + index}
-            className="text-primary font-bold py-1 px-2 bg-light-100 rounded-md"
+            onClick={() => onClickFilter(tool)}
+            className="text-primary font-bold py-1 px-2 bg-light-100 rounded-md hover:text-light-200 hover:bg-primary transition-colors"
           >
             {tool}
-          </span>
+          </button>
         ))}
       </div>
     </li>
