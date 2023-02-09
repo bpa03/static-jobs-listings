@@ -49,7 +49,7 @@ const JobItem: FC<JobItemProps> = ({ job, onClickFilter }) => {
       </div>
       <div className="space-y-2">
         <div className="flex flex-row items-center space-x-6">
-          <h2 className="text-lg text-primary font-bold">
+          <h2 className="text-lg text-primary font-bold hover:brightness-110 cursor-pointer">
             {job.company}
           </h2>
           <div className="space-x-2.5">

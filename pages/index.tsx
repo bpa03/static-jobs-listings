@@ -1,7 +1,9 @@
 import { useState, useCallback, useMemo } from 'react';
+import Head from 'next/head';
 import { GetStaticProps, NextPage } from 'next';
 import Header from 'components/Header';
 import JobList from 'components/JobList';
+import favicon from 'public/images/favicon.png';
 import { getJobs } from 'lib/jobs';
 import type { Job } from 'lib/jobs.interfaces';
 
@@ -46,7 +48,12 @@ const Home: NextPage<HomeProps> = ({ data }) => {
   }, [filters, jobs]);
 
   return (
-    <div className="scroll-smooth">
+    <>
+      <Head>
+        <title>Static Jobs Listings</title>
+        <link rel="shortcut icon" href={favicon.src} type="image/x-icon" />
+      </Head>
+      <div className="scroll-smooth">
       <Header
         filters={filters}
         onRemoveFilter={handleRemoveFilter}
@@ -61,6 +68,7 @@ const Home: NextPage<HomeProps> = ({ data }) => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 
