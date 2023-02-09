@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Job } from 'lib/jobs.interfaces';
 
 const BallSeparator: FC = () => (
@@ -19,8 +20,8 @@ const New: FC = () => (
 );
 
 const CardIndicator: FC = () => (
-  <span className="absolute top-0 left-0 bottom-0 bg-primary w-1 rounded-bl-md rounded-tl-md"/>
-)
+  <span className="absolute top-0 left-0 bottom-0 bg-primary w-1 rounded-bl-md rounded-tl-md" />
+);
 
 interface JobItemProps {
   onClickFilter: (filter: string) => void;
@@ -31,7 +32,15 @@ const JobItem: FC<JobItemProps> = ({ job, onClickFilter }) => {
   const technologies: string[] = [...job.tools, ...job.languages];
 
   return (
-    <li className="w-full bg-white shadow-md rounded-md pl-8 pr-6 pb-4 pt-10 relative">
+    <motion.li
+      className="w-full bg-white shadow-md rounded-md pl-8 pr-6 pb-4 pt-10 relative lg:flex lg:flex-row lg:justify-between lg:items-center"
+      initial={{ opacity: 0, scale: 0.9 }}
+      viewport={{ once: true }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: .5 }}
+      layout
+    >
       {job.featured ? <CardIndicator /> : null}
       <div className="absolute -top-8">
         <div className="relative w-16 h-16">
@@ -63,8 +72,8 @@ const JobItem: FC<JobItemProps> = ({ job, onClickFilter }) => {
           </span>
         </div>
       </div>
-      <div className="w-full h-[1px] bg-slate-200 my-4" />
-      <div className="flex gap-x-2 gap-y-3 flex-wrap">
+      <div className="w-full h-[1px] bg-slate-200 my-4 lg:hidden"/>
+      <div className="flex gap-x-2 gap-y-3 flex-wrap lg:block space-y-1 space-x-3">
         {technologies.map((tool, index) => (
           <button
             key={tool + index}
@@ -75,7 +84,7 @@ const JobItem: FC<JobItemProps> = ({ job, onClickFilter }) => {
           </button>
         ))}
       </div>
-    </li>
+    </motion.li>
   );
 };
 

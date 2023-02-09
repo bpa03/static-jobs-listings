@@ -46,13 +46,13 @@ const Home: NextPage<HomeProps> = ({ data }) => {
   }, [filters, jobs]);
 
   return (
-    <div>
+    <div className="scroll-smooth">
       <Header
         filters={filters}
         onRemoveFilter={handleRemoveFilter}
         onRemoveAllFilters={handleClearFilters}
       />
-      <main className="container mx-auto min-h-[calc(100vh_-_144px)]">
+      <main className="container mx-auto min-h-[calc(100vh_-_144px)] scroll-smooth">
         <div className="w-full px-4 py-8">
           <JobList
             jobs={filteredJobs}
